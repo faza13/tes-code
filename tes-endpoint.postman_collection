@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "e545b4c6-1b65-4ebb-8fe0-95246f4f1e92",
+		"name": "tes code sekolahmu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"token\", pm.response.json().data.user.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "class",
+			"item": [
+				{
+					"name": "add class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "x",
+									"value": "3",
+									"type": "default"
+								},
+								{
+									"key": "y",
+									"value": "2",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/class",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"class"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get class list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/class/get-class-list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"class",
+								"get-class-list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get class by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/class/get-class-by-id/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"class",
+								"get-class-by-id",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check in",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "class_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "id_no",
+									"value": "201",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/class/check-in",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"class",
+								"check-in"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"description": "int",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check out",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "class_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "id_no",
+									"value": "201",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/class/check-out",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"class",
+								"check-out"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "student",
+							"description": "string",
+							"type": "default"
+						},
+						{
+							"key": "id_no",
+							"value": "301",
+							"type": "default"
+						},
+						{
+							"key": "name",
+							"value": "admin",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"description": "string",
+							"type": "default"
+						},
+						{
+							"key": "role",
+							"value": "3",
+							"description": "1=> admin|2=>teacher|3=>student",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
